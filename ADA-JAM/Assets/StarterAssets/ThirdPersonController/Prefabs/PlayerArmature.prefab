@@ -1032,11 +1032,13 @@ GameObject:
   m_Component:
   - component: {fileID: 3893294197879345259}
   - component: {fileID: 6982812146204527121}
+  - component: {fileID: 491070565665128474}
   - component: {fileID: 4416926081852918491}
   - component: {fileID: 4416926081852918490}
   - component: {fileID: 5885216827943657505}
   - component: {fileID: 135756642000475821}
   - component: {fileID: 4416926081852918493}
+  - component: {fileID: 4774064308377564047}
   m_Layer: 8
   m_Name: PlayerArmature
   m_TagString: Player
@@ -1060,6 +1062,7 @@ Transform:
   - {fileID: 8338988566280778637}
   - {fileID: 8002264680419333305}
   - {fileID: 272993188807782130}
+  - {fileID: 1255068337797043433}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &6982812146204527121
@@ -1084,6 +1087,46 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &491070565665128474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416926081852918481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50978380d738649edb78022f175e063f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  age: 20
+  maxAge: 70
+  speedCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  staminaCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  powerCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  resilienceCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  hitAgeCost: 3
+  killAgeRestore: 2
 --- !u!143 &4416926081852918491
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1189,7 +1232,7 @@ MonoBehaviour:
   look: {x: 0, y: 0}
   jump: 0
   sprint: 0
-  analogMovement: 1
+  analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
 --- !u!114 &4416926081852918493
@@ -1290,6 +1333,21 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &4774064308377564047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416926081852918481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 053f8617a87364ef9ac63e7a9abe29dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
+  hourglassPrefab: {fileID: 3509992881491741605, guid: 7afea917000bb496d8d190d162e6faca, type: 3}
+  firePoint: {fileID: 1255068337797043433}
+  animator: {fileID: 5866666021909216657, guid: c8369819a2522445180b20468f681613, type: 3}
 --- !u!1 &4523139366846529165
 GameObject:
   m_ObjectHideFlags: 0
@@ -1351,6 +1409,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3677380931107609436}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4680596605454178244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1255068337797043433}
+  m_Layer: 8
+  m_Name: Firepoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1255068337797043433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4680596605454178244}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.1, y: 1.81, z: 1.21}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3893294197879345259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4905545990470132264
 GameObject:
