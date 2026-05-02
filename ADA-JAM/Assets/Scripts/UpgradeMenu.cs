@@ -23,42 +23,30 @@ public class UpgradeMenu : MonoBehaviour
     public void Show()
     {
         panel.SetActive(true);
-        Time.timeScale = 0f; // pause game
+        Time.timeScale = 0f;
+
+        // unlock cursor so player can click buttons
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void Hide()
     {
         panel.SetActive(false);
-        Time.timeScale = 1f; // unpause
+        Time.timeScale = 1f;
+
+        // re-lock cursor for gameplay
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
-    public void ChooseSpeed()
-    {
-        BoostCurve(playerStats.speedCurve);
-        Hide();
-    }
-
-    public void ChooseStamina()
-    {
-        BoostCurve(playerStats.staminaCurve);
-        Hide();
-    }
-
-    public void ChoosePower()
-    {
-        BoostCurve(playerStats.powerCurve);
-        Hide();
-    }
-
-    public void ChooseResilience()
-    {
-        BoostCurve(playerStats.resilienceCurve);
-        Hide();
-    }
+    public void ChooseSpeed()      { BoostCurve(playerStats.speedCurve);      Hide(); }
+    public void ChooseStamina()    { BoostCurve(playerStats.staminaCurve);    Hide(); }
+    public void ChoosePower()      { BoostCurve(playerStats.powerCurve);      Hide(); }
+    public void ChooseResilience() { BoostCurve(playerStats.resilienceCurve); Hide(); }
 
     void BoostCurve(AnimationCurve curve)
     {
-        // Lift every keyframe up by boostAmount
         for (int i = 0; i < curve.length; i++)
         {
             Keyframe k = curve[i];

@@ -17,25 +17,26 @@ public class HourglassProjectile : MonoBehaviour
     void Update()
     {
         transform.position += direction * speed * Time.deltaTime;
-        transform.Rotate(0, 180f * Time.deltaTime, 0); // spin for visual flair
+        transform.Rotate(0, 180f * Time.deltaTime, 0);
     }
 
     void OnTriggerEnter(Collider other)
-{
-    Debug.Log("Hourglass hit: " + other.gameObject.name);
-    
-    EnemyHealth enemy = other.GetComponent<EnemyHealth>();
-    if (enemy != null)
     {
-        enemy.TakeDamage(damage);
-        Destroy(gameObject);
-    }
+        Debug.Log("Hit: " + other.gameObject.name + " | tag: " + other.tag);
 
-    enemy = other.GetComponentInParent<EnemyHealth>();
-    if (enemy != null)
-    {
-        enemy.TakeDamage(damage);
-        Destroy(gameObject);
+        // Skip the player itself
+        if (other.CompareTag("Player")) return;
+
+        // Check on hit object and all parents
+        EnemyHealth enemy = other.GetComponentInParent<EnemyHealth>();
+        if (enemy != null)
+        {
+            Debug.Log("Dealing damage to: " + enemy.gameObject.name);
+            enemy.TakeDamage(damage);
+            Destroy(gameObject);
+            return;
+        }
+
+        Debug.Log("No EnemyHealth found on: " + other.gameObject.name);
     }
-}
 }
