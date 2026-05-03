@@ -93,10 +93,12 @@ public float currentHealth = 100f;
 }
 
     void GameOver()
-    {
-        Debug.Log("Age reached 70");
-        OnDeath(); // treat max age as a death too
-    }
+{
+    Debug.Log("Age reached 70 - Game Over");
+    UnityEngine.SceneManagement.SceneManager.LoadScene(
+        UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
+    );
+}
 
     void SetupDefaultCurves()
     {
