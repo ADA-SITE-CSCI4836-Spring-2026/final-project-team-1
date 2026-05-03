@@ -35,14 +35,22 @@ public float currentHealth = 100f;
     }
 
     void Update()
+{
+    age += passiveAgingRate * Time.deltaTime * 0.1f;
+    if (age >= maxAge) GameOver();
+    ApplyStats();
+    
+    // Check for collectibles every frame - bypasses OnTriggerEnter WebGL bug
+    Collider[] hits = Physics.OverlapSphere(transform.position, 1.5f);
+    foreach (Collider hit in hits)
     {
-        // Passive aging only
-        age += passiveAgingRate * Time.deltaTime * 0.1f;
-
-        if (age >= maxAge) GameOver();
-
-        ApplyStats();
+        Collectible col = hit.GetComponent<Collectible>();
+        if (col != null)
+        {
+            col.Collect();
+        }
     }
+}
 
     void ApplyStats()
     {
@@ -114,4 +122,6 @@ public float currentHealth = 100f;
             new Keyframe(70, 60f)
         );
     }
+
+    
 }

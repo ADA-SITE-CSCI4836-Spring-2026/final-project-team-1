@@ -12,8 +12,10 @@ public class UpgradeMenu : MonoBehaviour
     void Awake()
 {
     Instance = this;
-    panel.SetActive(false);
-    
+    if (panel != null)
+        panel.SetActive(false);
+    else
+        Debug.LogError("PANEL IS NULL IN AWAKE");
 }
 
     void Start()
@@ -21,25 +23,20 @@ public class UpgradeMenu : MonoBehaviour
         playerStats = FindObjectOfType<PlayerStats>();
     }
 
-    public void Show()
-    {
-        panel.SetActive(true);
-        Time.timeScale = 0f;
+   public void Show()
+{
+    panel.SetActive(true);
+    panel.transform.SetAsLastSibling();
+    Cursor.lockState = CursorLockMode.None;
+    Cursor.visible = true;
+}
 
-        // unlock cursor so player can click buttons
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-    }
-
-    public void Hide()
-    {
-        panel.SetActive(false);
-        Time.timeScale = 1f;
-
-        // re-lock cursor for gameplay
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
+public void Hide()
+{
+    panel.SetActive(false);
+    Cursor.lockState = CursorLockMode.None;
+    Cursor.visible = false;
+}
 
     public void ChooseSpeed()      { BoostCurve(playerStats.speedCurve);      Hide(); }
     public void ChooseStamina()    { BoostCurve(playerStats.staminaCurve);    Hide(); }

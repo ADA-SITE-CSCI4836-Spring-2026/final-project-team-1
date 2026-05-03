@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private bool collected = false;
+
+    public void Collect()
     {
-        if (other.CompareTag("Player"))
-        {
-            if (UpgradeMenu.Instance != null)
-                UpgradeMenu.Instance.Show();
-            gameObject.SetActive(false);
-        }
+        if (collected) return;
+        collected = true;
+        Debug.Log("Collected via OverlapSphere!");
+        if (UpgradeMenu.Instance != null)
+            UpgradeMenu.Instance.Show();
+        gameObject.SetActive(false);
     }
 }
