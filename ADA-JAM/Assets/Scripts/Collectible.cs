@@ -6,7 +6,8 @@ public class Collectible : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            UpgradeMenu.Instance.Show();
+            if (UpgradeMenu.Instance != null)
+                UpgradeMenu.Instance.Show();
             gameObject.SetActive(false);
         }
     }

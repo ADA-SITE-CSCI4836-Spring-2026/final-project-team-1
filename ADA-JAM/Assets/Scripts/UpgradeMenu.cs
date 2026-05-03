@@ -10,10 +10,11 @@ public class UpgradeMenu : MonoBehaviour
     private PlayerStats playerStats;
 
     void Awake()
-    {
-        Instance = this;
-        panel.SetActive(false);
-    }
+{
+    Instance = this;
+    panel.SetActive(false);
+    
+}
 
     void Start()
     {

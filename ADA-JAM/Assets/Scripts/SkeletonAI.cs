@@ -60,8 +60,8 @@ public class SkeletonAI : MonoBehaviour
 }
 
     void Attack()
-    {
-        PlayerStats stats = player.GetComponent<PlayerStats>();
-        if (stats != null) stats.TakeHit();
-    }
+{
+    PlayerStats stats = player.GetComponent<PlayerStats>();
+    if (stats != null) stats.TakeHit();
+}
 }
